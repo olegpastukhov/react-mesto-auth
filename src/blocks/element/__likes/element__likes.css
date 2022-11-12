@@ -1,0 +1,15 @@
+.element__likes {
+  /* margin: 5px 5px 1px 0; */
+  margin: 0;
+  padding: 0;
+  width: 22px;
+  height: 19px;
+  align-self: center;
+  background: url(../../../images/like-disabled.svg);
+  border: none;
+}
+
+.element__likes:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}

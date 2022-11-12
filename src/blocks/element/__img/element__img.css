@@ -1,0 +1,10 @@
+.element__img {
+  display: block;
+  border: 0;
+  width: 282px;
+  height: 282px;
+  border-radius: 10px 10px 0 0;
+  cursor: pointer;
+  transition: 0.5s ease;
+  object-fit: cover;
+}

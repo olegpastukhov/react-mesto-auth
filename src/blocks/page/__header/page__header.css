@@ -1,0 +1,11 @@
+.page__header {
+  padding: 45px 0 0;
+  margin: 0 auto;
+}
+
+/* 480px */
+@media screen and (max-width: 480px) {
+  .page__header {
+    padding-top: 28px;
+  }
+}

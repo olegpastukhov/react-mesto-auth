@@ -1,0 +1,4 @@
+.element__likes_active {
+  background: transparent url(../../../../images/like-active.svg) center no-repeat;
+  background-size: cover;
+}

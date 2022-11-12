@@ -1,0 +1,21 @@
+.content {
+  max-width: 880px;
+  width: calc(100% - 2*200px);
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+/* 1120px */
+@media screen and (max-width: 1120px) {
+  .content {
+    width: calc(100% - 2*90px);
+  }
+}
+
+/* 480px */
+@media screen and (max-width: 480px) {
+  .content {
+    width: calc(100% - 2*19px);
+  }
+}
