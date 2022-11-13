@@ -40,15 +40,16 @@ function App() {
   const history = useHistory();
 
   React.useEffect(() => {
-    Promise.all([api.getUserInfo(), api.getInitialCards()])
-      .then(([userData, initialCards]) => {
-        setCurrentUser(userData);
-        setCards(initialCards);
-      })
-      .catch((err) => {
-        console.log(`Ошибка: ${err}`);
-      });
-  }, []);
+    if (isLoggedIn) {
+      Promise.all([api.getUserInfo(), api.getInitialCards()])
+        .then(([userData, initialCards]) => {
+          setCurrentUser(userData);
+          setCards(initialCards);
+        })
+        .catch((err) => {
+          console.log(`Ошибка: ${err}`);
+        });
+  }}, [isLoggedIn]);
 
   function handleCardClick(card) {
     setSelectedCard(card);
@@ -60,9 +61,13 @@ function App() {
 
     // Отправляем запрос в API и получаем обновлённые данные карточки
     api
-      .changeLikeCardStatus(card._id, !isLiked).then((newCard) => {
-        setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
-      });
+      .changeLikeCardStatus(card._id, !isLiked)
+      .then((newCard) => {
+        setCards((state) => state.map((c) => c._id === card._id ? newCard : c))
+          .catch((err) => {
+            console.log(`Ошибка: ${err}`);
+          });
+      })
   };
 
   function handleCardDeleteClick(cardId) {
@@ -75,6 +80,7 @@ function App() {
       .deleteCard(cardId)
       .then(() => {
         setCards((cards) => cards.filter((card) => card._id !== cardId));
+        closeAllPopups();
       })
       .catch((err) => {
         console.log(`Ошибка: ${err}`);
@@ -244,7 +250,7 @@ function App() {
             onCardClick={handleCardClick}
             cards={cards}
             onCardLike={handleCardLike}
-            onCardDelete={handleCardDeleteClick}
+            onCardDeleteClick={handleCardDeleteClick}
           />
         </Switch>
 

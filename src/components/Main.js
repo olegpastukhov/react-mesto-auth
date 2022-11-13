@@ -30,7 +30,7 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick, cards, onC
               card={card}
               onCardClick={onCardClick}
               onCardLike={onCardLike}
-              onCardDelete={onCardDeleteClick}
+              onCardDeleteClick={onCardDeleteClick}
             />
           );
         })}
